@@ -1,6 +1,8 @@
 package com.example.goodReadsApplication;
 import java.util.*;
 import com.example.goodReadsApplication.BookRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 
 public class BookService implements BookRepository{
@@ -20,6 +22,7 @@ public class BookService implements BookRepository{
     @Override
     public Book getBookById(int bookId){
         Book book = hmap.get(bookId);
+        if(book == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return book;
     }
 }
