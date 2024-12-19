@@ -18,6 +18,10 @@ public class BookController {
     public Book addBook(@RequestBody Book book){
         return bookService.addBook(book);
     }
+    @PutMapping("/books/{bookId}")
+    public Book updateBook(@PathVariable("bookId") int bookId, @RequestBody Book book){
+        return bookService.updateBook(bookId, book);
+    }
 
 
 }
